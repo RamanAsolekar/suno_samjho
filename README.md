@@ -48,6 +48,7 @@ graph TD
     D --> F[Info & Resources]
     D --> G[Profile & Settings]
 ```
+---
 
 ## 📸 Screenshots *(Coming Soon)*  
 
