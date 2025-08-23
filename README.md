@@ -37,10 +37,10 @@ Our goal is simple: **make mental health support affordable, accessible, and sti
 
 ---
 
-## 📱 App Flow  
+## 📱 App Flow
 
 ```mermaid
-graph TD
+flowchart TD
     A[Splash Screen] --> B[Onboarding Pages]
     B --> C[Login / SignUp (Supabase)]
     C --> D[Main Dashboard]
@@ -48,6 +48,7 @@ graph TD
     D --> F[Info & Resources]
     D --> G[Profile & Settings]
 ```
+
 ---
 
 ## 📸 Screenshots *(Coming Soon)*  
