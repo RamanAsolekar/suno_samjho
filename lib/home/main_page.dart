@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../profile/profile_page.dart';
 import '../chatbot/chatbot_page.dart';
+import '../info/general_info_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key, this.userName = 'Name'});
@@ -277,6 +278,20 @@ class _DashboardPageState extends State<DashboardPage> {
                     ),
                   ),
 
+                  const SizedBox(height: 14),
+
+                  // Suggestion box: real-time help linking to General Info
+                  _SuggestionBox(
+                    isDark: _isDark,
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const GeneralInfoPage(),
+                        ),
+                      );
+                    },
+                  ),
+
                   const Spacer(),
 
                   // CTA at bottom
@@ -399,6 +414,89 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _SuggestionBox extends StatelessWidget {
+  const _SuggestionBox({required this.isDark, required this.onTap});
+  final bool isDark;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final cardColor = isDark ? const Color(0xFF0F1720) : Colors.white;
+    final shadowColor = isDark
+        ? Colors.black.withOpacity(0.6)
+        : Colors.black.withOpacity(0.05);
+
+    return Material(
+      color: Colors.transparent,
+      borderRadius: BorderRadius.circular(14),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(14),
+        onTap: onTap,
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: cardColor,
+            borderRadius: BorderRadius.circular(14),
+            boxShadow: [
+              BoxShadow(
+                color: shadowColor,
+                blurRadius: 12,
+                offset: const Offset(0, 6),
+              ),
+            ],
+            border: Border.all(
+              color: theme.colorScheme.primary.withOpacity(0.18),
+              width: 1.5,
+            ),
+          ),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.primary.withOpacity(0.12),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.tips_and_updates,
+                  color: theme.colorScheme.primary,
+                ),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Suggestions for You',
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Real-time tips and quick activities to feel better now.',
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.textTheme.bodySmall?.color?.withOpacity(
+                          0.8,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              Icon(Icons.chevron_right, color: theme.colorScheme.primary),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -21,6 +21,7 @@ pubspec.lock
 .pub-cache/
 .pub/
 build/
+**/build/
 ios/Pods/
 ios/Flutter/App.framework
 ios/Flutter/Flutter.framework
@@ -33,8 +34,12 @@ android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
 android/key.properties
 android/local.properties
 android/.gradle/
+android/.gradle/**
+**/.gradle/
+**/.gradle/**
 android/app/build/
 android/build/
+**/captures/
 macos/Flutter/ephemeral
 linux/flutter/ephemeral
 windows/flutter/ephemeral
@@ -42,9 +47,12 @@ lib/generated_plugin_registrant.dart
 lib/**.g.dart
 lib/**.freezed.dart
 .dart_tool/
+**/.dart_tool/
 
 # IDEs
 .vscode/
+.settings/
+.metadata
 
 # Logs
 logs/
@@ -80,4 +88,16 @@ yarn.lock
 *.jar
 *.war
 *.ear
+
+# Xcode / Apple specific
+**/DerivedData/
+**/.DS_Store
+ios/.last_build_id
+ios/Runner.xcworkspace/
+
+# Android local/Gradle daemon files
+android/.idea/
+android/.settings/
+android/**/out/
+android/**/local.properties
 
