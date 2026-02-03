@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GeneralInfoPage extends StatelessWidget {
-  const GeneralInfoPage({Key? key}) : super(key: key);
+  const GeneralInfoPage({super.key});
 
   // Sample content -- replace with dynamic content from your DB
   final List<DoctorTip> tips = const [
@@ -88,11 +88,11 @@ class GeneralInfoPage extends StatelessWidget {
               const SizedBox(height: 10),
               _sectionTitle("Doctor-recommended Tips"),
               const SizedBox(height: 8),
-              ...tips.map((t) => DoctorTipCard(tip: t)).toList(),
+              ...tips.map((t) => DoctorTipCard(tip: t)),
               const SizedBox(height: 14),
               _sectionTitle("Activities (5–10 mins)"),
               const SizedBox(height: 8),
-              ...activities.map((a) => ActivityCard(item: a)).toList(),
+              ...activities.map((a) => ActivityCard(item: a)),
               const SizedBox(height: 14),
               _sectionTitle("Helpful Videos"),
               const SizedBox(height: 8),
@@ -210,7 +210,7 @@ class VideoItem {
 
 class DoctorTipCard extends StatefulWidget {
   final DoctorTip tip;
-  const DoctorTipCard({Key? key, required this.tip}) : super(key: key);
+  const DoctorTipCard({super.key, required this.tip});
 
   @override
   State<DoctorTipCard> createState() => _DoctorTipCardState();
@@ -280,7 +280,7 @@ class _DoctorTipCardState extends State<DoctorTipCard> {
 
 class ActivityCard extends StatefulWidget {
   final ActivityItem item;
-  const ActivityCard({Key? key, required this.item}) : super(key: key);
+  const ActivityCard({super.key, required this.item});
 
   @override
   State<ActivityCard> createState() => _ActivityCardState();
@@ -342,7 +342,7 @@ class _ActivityCardState extends State<ActivityCard> {
 
 class VideoCard extends StatelessWidget {
   final VideoItem video;
-  const VideoCard({Key? key, required this.video}) : super(key: key);
+  const VideoCard({super.key, required this.video});
 
   Future<void> _openUrl(BuildContext context, String url) async {
     final uri = Uri.parse(url);
@@ -421,7 +421,7 @@ class VideoCard extends StatelessWidget {
 
 class AffirmationChip extends StatelessWidget {
   final String text;
-  const AffirmationChip({Key? key, required this.text}) : super(key: key);
+  const AffirmationChip({super.key, required this.text});
 
   void _copyToClipboard(BuildContext context, String text) {
     ScaffoldMessenger.of(
